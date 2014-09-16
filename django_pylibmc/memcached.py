@@ -142,7 +142,7 @@ class PyLibMCCache(BaseMemcachedCache):
                       exc_info=True)
             return False
         except MemcachedError, e:
-            log.error('MemcachedError: %s (key: %s)' % (e, key), exc_info=True)
+            log.error('MemcachedError: %s (key: %s, %d bytes)' % (e, key, len(self._serialize_value(value))), exc_info=True)
             return False
 
     def delete(self, *args, **kwargs):
